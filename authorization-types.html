@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Phantom by HTML5 UP</title>
+		<title>Auth.io - Authorization Types</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -24,7 +24,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Auth.io</span>
 								</a>
 
 							<!-- Nav -->
@@ -52,12 +52,36 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Generic Page</h1>
+							<h1>Types of Authorization</h1>
 							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-						</div>
+							<h2>Simple Authorization</h2>
+							<p>Simple authorization involves hard-coding permission checks into your application and assigning them to a user or group.</p>
+							<p><b>Pros:</b></p> The basic logic is easy to build and sufficient for applications with smaller user databases.</p> 
+							<p><b>Cons:</b> Difficult to change authorization rules dynamically and can require a lot of refactoring.</p> 
+							<h2>Permission-Based Authorization</h2> 
+							<p>Permission-based authorization is a more dynamic way of handling authorization. Permissions are statements of functionality that define and resource and what actions it can perform. Permission-based authorization separates your application logic from your data model.</p> 
+							<p><b>Pros:</b> Easy to change authorization rules dynamically and provides flexibility to your security model.</p> 
+							<p><b>Cons:</b> Difficult to change authorization rules dynamically and can require a lot of refactoring.</p> 
+							<h2>How to Setup Access Control</h2> 
+							<h3>Fine-Grained Permissions</h3>
+							<p>Fine-grained permissions allow you to control user access based on activity, state, or unique attributes. These permissions are custom logic that you write  specifically for your application. They can either add flexibility to your group or role authorization, or replace it all together. Fine-grained permissions are based on filters of user data parameters. There’s two types of permissions:</p>
+							<p><b>User Unique Permissions:</b> Any permissions that are unique to a user should be tied to that user’s Account resource.</p>
+							<p><b>Role Permissions:</b> Any permissions that will be shared among a number of users are better bundled together in roles, which individuals accounts are tied to.</p>
+							<p>Permissions look like this:</p> 
+							<code>
+							{
+							 "name": "create-admin",
+							 "description": "This permission allows the account to create an admin",
+							 "action": "read",
+  							 "resource": "/admin/create",
+						         "effect": "allow"
+							}
+							</code>
+							<h2>Role-Based Access Control</h2>
+							<p>Role-based access control is the process of using roles as a means to control access to application features or data. Implicit Role-Based Access Control is the most common form of RBAC. This is when the application determines  a user’s permissions based on their pre-determined role. That role has specific permissions, but the permissions are not defined in the code itself.  The developer writes an if/else statement reflecting the assumption.</p> 
+							<h2>Resource-Based Access Control</h2>
+							<p>Explicit Role-Based Access Control doesn’t require you to refactor code when permissions need to be changed. This type of RBAC explicitly attributes a concrete behavior statement about a specific resource instance with a user account. Instead of tying permissions to the role, permissions are based off the behaviors assigned to that user or group.</p> 
+							</div>
 					</div>
 
 				<!-- Footer -->
