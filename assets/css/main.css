@@ -231,6 +231,7 @@
 		margin-left: 0;
 	}
 
+
 	.\34 u, .\34 u\24 {
 		width: 33.3333333333%;
 		clear: none;
@@ -2730,7 +2731,7 @@
 					}
 
 			.tiles article.style1 > .image:before {
-				background-color: #033860;
+				background-color: #087CA7;
 			}
 
 			.tiles article.style2 > .image:before {
@@ -2738,11 +2739,11 @@
 			}
 
 			.tiles article.style3 > .image:before {
-				background-color: #004385;
+				background-color: #087CA7;
 			}
 
 			.tiles article.style4 > .image:before {
-				background-color: #033860;
+				background-color: #087CA7;
 			}
 
 			.tiles article.style5 > .image:before {
@@ -2750,7 +2751,7 @@
 			}
 
 			.tiles article.style6 > .image:before {
-				background-color: #004385;
+				background-color: #087CA7;
 			}
 
 			body:not(.is-touch) .tiles article:hover > .image {
