@@ -67,53 +67,24 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
-							<section>
+								<section>
 								<h2>Get in touch</h2>
-								?php
-
-if($_POST["submit"]) {
-    $recipient="your@email.address";
-    $subject="Form to email message";
-    $sender=$_POST["sender"];
-    $senderEmail=$_POST["senderEmail"];
-    $message=$_POST["message"];
-
-    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
-
-    mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
-
-    $thankYou="<p>Thank you! Your message has been sent.</p>";
-}
-
-?><!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Contact form to email</title>
-</head>
-
-<body>
-
-    <?=$thankYou ?>
-
-    <form method="post" action="contact.php">
-        <label>Name:</label>
-        <input name="sender">
-
-        <label>Email address:</label>
-        <input name="senderEmail">
-
-        <label>Message:</label>
-        <textarea rows="5" cols="20" name="message"></textarea>
-
-        <input type="submit" name="submit">
-    </form>
-
-</body>
-
-</html>
+								<form method="post" action="#">
+									<div class="field half first">
+										<input type="text" name="name" id="name" placeholder="Name" />
+									</div>
+									<div class="field half">
+										<input type="email" name="email" id="email" placeholder="Email" />
+									</div>
+									<div class="field">
+										<textarea name="message" id="message" placeholder="Message"></textarea>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="special" /></li>
+									</ul>
+								</form>
 							</section>
+
 							<section>
 								<h2>Follow</h2>
 								<ul class="icons">
