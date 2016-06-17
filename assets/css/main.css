@@ -17,6 +17,10 @@
 		font: inherit;
 		vertical-align: baseline;
 	}
+	
+	h2 {
+		font-family: "Source Sans Pro", Helvetica, sans-serif !important;
+	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
