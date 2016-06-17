@@ -65,8 +65,75 @@
 							<p>Groups are a collection of users that are tied together based on a specific purpose. For example, you could have groups of admins that can access all facets of your application and control permissions. Users could belong to more than one group.</p> 
 							<h3>Roles</h3>
 							<p>Roles are predetermined permissions based on a user’s specific function within your application. For example, you may want your admins to be able to publish changes to your application whereas a different group of users should only be able to make edits.</p>
+							<a name="authztypes"><h1>Types of Authorization</h1></a>
+							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+							<h2>Simple Authorization</h2>
+							<p>Simple authorization involves hard-coding permission checks into your application and assigning them to a user or group.</p>
+							<p>Pros: The basic logic is easy to build and sufficient for applications with smaller user databases.</p> 
+							<p>Cons: Difficult to change authorization rules dynamically and can require a lot of refactoring.</p> 
+							<h2>Permission-Based Authorization</h2> 
+							<p>Permission-based authorization is a more dynamic way of handling authorization. Permissions are statements of functionality that define and resource and what actions it can perform. Permission-based authorization separates your application logic from your data model.</p> 
+							<p>Pros: Easy to change authorization rules dynamically and provides flexibility to your security model.</p> 
+							<p>Cons: Difficult to change authorization rules dynamically and can require a lot of refactoring.</p> 
+							<h2>How to Setup Access Control</h2> 
+							<h3>Fine-Grained Permissions</h3>
+							<p>Fine-grained permissions allow you to control user access based on activity, state, or unique attributes. These permissions are custom logic that you write  specifically for your application. They can either add flexibility to your group or role authorization, or replace it all together. Fine-grained permissions are based on filters of user data parameters. There’s two types of permissions:</p>
+							<p>User Unique Permissions: Any permissions that are unique to a user should be tied to that user’s Account resource.</p>
+							<p>Role Permissions: Any permissions that will be shared among a number of users are better bundled together in roles, which individuals accounts are tied to.</p>
+							<p>Permissions look like this:</p> 
+							<code>{ <br>
+							 "name": "create-admin", <br>
+							 "description": "This permission allows the account to create an admin", <br>
+							 "action": "read", <br>
+  							 "resource": "/admin/create", <br>
+						         "effect": "allow" <br>
+							}<br></code>
+							<br>
+							<h2>Role-Based Access Control</h2>
+							<p>Role-based access control is the process of using roles as a means to control access to application features or data. Implicit Role-Based Access Control is the most common form of RBAC. This is when the application determines  a user’s permissions based on their pre-determined role. That role has specific permissions, but the permissions are not defined in the code itself.  The developer writes an if/else statement reflecting the assumption.</p> 
+							<h2>Resource-Based Access Control</h2>
+							<p>Explicit Role-Based Access Control doesn’t require you to refactor code when permissions need to be changed. This type of RBAC explicitly attributes a concrete behavior statement about a specific resource instance with a user account. Instead of tying permissions to the role, permissions are based off the behaviors assigned to that user or group.</p> 
+							<a name="multitenant"><h1>What is Multi-Tenant Authorization?</h1></a>
+							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+							<p>Multi-tenant authorization is the process of partitioning your user base into separate customer organizations so that users from different organizations can access your application within the same architecture, but the user bases are separate and secure from one another. For example, a SaaS company could sell their software to multiple organizations and store the user data in partitioned directories without running a second instance of the application. You can think of multi-tenancy like an apartment complex. There’s multiple residents sharing the same infrastructure while accessing their own private, secure apartment. A multi-tenant application is a single application that services multiple tenants simultaneously. For privacy and security purposes, it’s very important that the application maintain data segmentation between its multiple tenants.</p>
+							<p>Devs must figure out how to do this either using separate physical databases or by creating virtual data partitions in application code. Due to infrastructural complexities at scale, most engineering teams avoid the separate database approach and implement virtual data partitions in their own application code. </p>
+							<h2>Ways to Represent Tenants</p>
+							<h3>Tenants as Directories</h3>
+							<p>Directories are a collection of accounts and groups that belong to a specific organization. For multi-tenant applications here’s a few best practices you should follow: </p>
+							<ul>
+							<li>All Accounts within a Directory must have a unique email and username</li>
+							<li>All Groups within a Directory must have a unique name</li>
+							<li>User policies are set at the Directory level</li>
+							<li>A directory can be added to multiple organizations</li>
+							</ul>
+							<p>From these points you can derive a few conditions where the tenants-as-Directories strategy is optimal. If your tenants satisfy one or more of these conditions:</p>
+							<ul>
+							<li>You do not require email uniqueness across tenants. If a user has signed up for an Account with one tenant, they are able to use that same email to create an email for another Account in another tenant.</li>
+							<li>Each tenant has its own password strength policy.</li>
+							<li>Each tenant has different emails that need to be sent (or not sent) as part of the user Account creation process.</li>
+							<li>Each tenant requires different user Groups and/or role Groups. Application-wide Groups that span across tenants are not required.</li>
+							</ul>
+							<h3>Tenants as Groups</h3>
+							<p>The other multi-tenancy option is to have a single Directory under which each of your application’s tenants has their own Group. Choosing this strategy is likely right for you if:</p>
+							<ul>
+							<li>You want to guarantee email and username uniqueness across all tenants. This allows for a unified user identity, which allows for things like single-sign-on and account sharing between tenants on your application.</li>
+							<li>All tenants share password and email policies.</li>
+							<li>You want to ensure that tenant names are unique, since the Group name must be unique within a Directory.</li>
+							<li>You want to have application-wide roles that span across tenants.</li>
+							</ul>
+							<h2>What are Organizations</h2>
+							<p>Organizations are a resource that allows your applications to have as many  Directories and Groups as they want, while also maintaining strict data segregation. So if a tenant requires a Cloud Directory, a Google Social Directory, and an LDAP Directory, all of these can sit under the umbrella of a single Organization resource that represents their data space in your app.</p>
+							<p>Although Organizations do not themselves own Accounts in the same way as Directories and Groups, they can be mapped to Applications as Account Stores for the purposes of user log in. This means that they can be used as, among other things, a single-point of access control to an Application. For example, if you wanted to enable login for a new tenant in your multi-tenant application, all you would have to do is map all of the relevant Directories and/or Groups to your Organization, and then map that Organization to your Application as an Account Store. If at some future point you want to disable that tenant, all you have to do is remove the Account Store Mapping between that Organization and your Application, and the tenant’s users would no longer be able to log in.</p>
+							<h2>Types of Multi-Tenant Applications</h2>
+							<p>There are different three different approaches to Multi-Tenancy that you can choose from when building your application: </p>
+							<h3>Manual Selection Before Authentication</h3>
+							<p>This is when you have an extra field on your log in form where the user would manually type in their Organization. They might type in “Green” for the Organization that they belong to, and then enter their email and password as usual.</p>
+							<h3>Manual Selection After Authentication</h3>
+							<p>First the user would authenticate using their username and password. Then they land in the lobby of the application where they select their Organization from a list. The user would select the right one and go to the main part of the app.</p>
+							<h3>Automatic Selection by Subdomain</h3>
+							<p>This post will focus on the easiest type of Multi-Tenancy to manage for your users which is Automatic Selection by Subdomain. It’s an advanced Multi-Tenant feature supported by Stormpath. Let’s look at how to build this.</p>
 							<ul class="actions fit small">
-										<li><a href="authorization-types.html" class="button special fit small">Continue on to Authorization Types</a></li>
+										<li><a href="security-compliance.html" class="button special fit small">Continue on to Security & Compliance</a></li>
 							</ul>
 							</div>
 					</div>
