@@ -66,7 +66,6 @@
 							<h3>Roles</h3>
 							<p>Roles are predetermined permissions based on a user’s specific function within your application. For example, you may want your admins to be able to publish changes to your application whereas a different group of users should only be able to make edits.</p>
 							<a name="authztypes"><h1>Types of Authorization</h1></a>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
 							<h2>Simple Authorization</h2>
 							<p>Simple authorization involves hard-coding permission checks into your application and assigning them to a user or group.</p>
 							<p>Pros: The basic logic is easy to build and sufficient for applications with smaller user databases.</p> 
@@ -94,7 +93,6 @@
 							<h2>Resource-Based Access Control</h2>
 							<p>Explicit Role-Based Access Control doesn’t require you to refactor code when permissions need to be changed. This type of RBAC explicitly attributes a concrete behavior statement about a specific resource instance with a user account. Instead of tying permissions to the role, permissions are based off the behaviors assigned to that user or group.</p> 
 							<a name="multitenant"><h1>What is Multi-Tenant Authorization?</h1></a>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
 							<p>Multi-tenant authorization is the process of partitioning your user base into separate customer organizations so that users from different organizations can access your application within the same architecture, but the user bases are separate and secure from one another. For example, a SaaS company could sell their software to multiple organizations and store the user data in partitioned directories without running a second instance of the application. You can think of multi-tenancy like an apartment complex. There’s multiple residents sharing the same infrastructure while accessing their own private, secure apartment. A multi-tenant application is a single application that services multiple tenants simultaneously. For privacy and security purposes, it’s very important that the application maintain data segmentation between its multiple tenants.</p>
 							<p>Devs must figure out how to do this either using separate physical databases or by creating virtual data partitions in application code. Due to infrastructural complexities at scale, most engineering teams avoid the separate database approach and implement virtual data partitions in their own application code. </p>
 							<h2>Ways to Represent Tenants</p>
