@@ -89,13 +89,6 @@
 <p>First, because the server won’t need to store that token! So once your application starts to scale, if you were on session authentication, then server load time would increase with that scale. Token authentication, since it’s stateless, helps limit that load time.</p>
 <p>Token authentication is also commonly used for mobile applications as they are easier to use than cookies on iOS or Android.</p>
 <p>Finally, if your user is accessing your application via multiple servers - say because a load balancer or micro-services hosted on different locations - then you will have to have either a distributed session storage layer or have sticky sessions set up. With token auth, however, each server has everything it needs to validate the user’s identity within the token itself - so no need for those sticky sessions!</p>
-<h3>What’s OAuth 2.0?</h3>
-<p>OAuth is a standard for using tokens when you need to 1). get permission to bring in a user’s data from another system - for example you want to use a user’s Facebook or Google data, or 2). When you have a mobile application, it’s more secure to use an access token for authentication rather than storing a user’s login credentials on their mobile device.</p>
-<p>To be clear, there is OAuth 1.0a and OAuth2, which are very different from each other. OAuth2 is more widely used, so we’ll focus on that, referring to it as OAuth.</p>
-<p>OAuth has 4 primary grant types: password credentials, client credentials, authorization and implicit.</p> 
-<p>The password grant type gives the ability to get an access token with a given username and password. The password grant type is used when you have built your own OAuth service and application and you want to authenticate users for your mobile apps.</p>
-<p>Client credentials grant type is used when you’re building an application that is doing non-user related tasks.</p>
-<p>Authorization grant type is when you want to bring in user data from another system on a server side app, and implicit grant type is similar but for a client-side app.</p>
 <h2>Social Login</h2>
 <p>Social login is letting a user log into your application using their login credentials from a social networking service - Facebook, Twitter, Google. Social login can serve simply an authentication purpose, or if the application is bringing in user data from the social service, can be authorized using the aforementioned OAuth protocol.</p>
 <p>Social login helps make user registration easier, since they don’t need to come up with a new username and password, and allows web developers to use additional user data from 3rd party social networks.</p>
