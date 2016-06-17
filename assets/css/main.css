@@ -1764,10 +1764,12 @@
 
 		h2 {
 			font-size: 1em;
+			font-family: "Source Sans Pro", Helvetica, sans-serif;
 		}
 
 		h3 {
 			font-size: 0.8em;
+			font-family: "Source Sans Pro", Helvetica, sans-serif;
 		}
 
 	}
@@ -2191,7 +2193,7 @@
 		.select-wrapper:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: "Source Sans Pro", Helvetica, sans-serif;
+			font-family: FontAwesome;
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
