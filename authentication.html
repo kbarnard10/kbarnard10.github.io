@@ -55,7 +55,7 @@
 					<div id="main">
 						<div class="inner">
 							<h1>What is Authentication?</h1>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+							<span class="image main"><img src="images/hero-1.jpg" alt="" /></span>
 <p>In the context of web development, authentication is verifying that a user is who they say they are. It lets a user access a system with a password or token, while authorization defines the resources that can be used. We will cover these respective authentication methods in further detail.</p>
 <p>Authentication is a critical function for any web application as it 1). keeps user data private, and 2). it can return information specific and useful to that user. As hackers grow more sophisticated, security processes for protecting user data need to stay ahead of the curve. As such, a strong authentication system needs to have strong encryption, API security, firewall protection, and comprehensive data management and system access processes.</p>
 <p>In short, authentication is a critical component of any web application, and it needs to balance ironclad security demands with a smooth customer experience.</p>
@@ -65,16 +65,16 @@
 <p>Password security is the most widely used authentication methodology. A user gives the server their username and password, and if there is a match on the username and password in the table, the user is authenticated and let in to the application. In order to secure this sensitive data there should be a number of safeguards implemented, which we will cover in further detail below.</p>
 <h3>So what are the drawbacks and benefits of password security?</h3> 
 <p>Some commonly referenced drawbacks to password security are (citation: https://www.youtube.com/watch?v=3n4o1BiHT30):</p>
-<ul>
-<li>1). Since it is user input, passwords will be lacking in complexity, making them easy to hack if the appropriate security measures are not taken</li>
-<li>2). Questions used to recover passwords for users can also be relatively simple, and easily answered by a malicious user</li>
-<li>3). Users reuse their passwords across multiple websites, so once one is compromised, a hacker has access to other websites used by that user as well</li>
-</ul>
+<ol>
+<li>Since it is user input, passwords will be lacking in complexity, making them easy to hack if the appropriate security measures are not taken</li>
+<li>Questions used to recover passwords for users can also be relatively simple, and easily answered by a malicious user</li>
+<li>Users reuse their passwords across multiple websites, so once one is compromised, a hacker has access to other websites used by that user as well</li>
+</ol>
 <p>That being said, as pointed out in this authentication post, password security has 2 key benefits that have made it the most commonly used form of authentication:</p>
-<ul>
-<li>1). They are easy to use and deploy for both developers and users</li>
-<li>2). If you follow security best practices (see below), then you can address the security concerns of password authentication</li>
-</ul>
+<ol>
+<li>They are easy to use and deploy for both developers and users</li>
+<li>If you follow security best practices (see below), then you can address the security concerns of password authentication</li>
+</ol>
 <h3>What are the common levels of password security? And how they are implemented?</h3>
 <p>At the most basic level of security, passwords should be hashed. A hashing algorithm algorithm takes plain text passwords and spits it out as a bunch of randomness. You should NEVER store passwords in plain text - this is an immediate red flag, so storing passwords as hashed values is the minimum level of security you should take. </p>
 <p>The next level of password security adds a “salt” to the hashed algorithm. This additional salt is included as part of the hashing algorithm, and adds additional bits of data to the hashed password, making it more difficult to use Brute Force, Rainbow Tables, or dictionary attacks to crack the stored passwords. </p>
@@ -105,8 +105,8 @@
 <h2>Social Login</h2>
 <p>Social login is letting a user log into your application using their login credentials from a social networking service - Facebook, Twitter, Google. Social login can serve simply an authentication purpose, or if the application is bringing in user data from the social service, can be authorized using the aforementioned OAuth protocol.</p>
 <p>Social login helps make user registration easier, since they don’t need to come up with a new username and password, and allows web developers to use additional user data from 3rd party social networks.</p>
-<h2>SSO</h2>
-<p>SSO, or single sign on, also significantly improves the login experience for users. As the name suggests, SSO lets users authenticate only once, regardless of how many subsequent applications they visit after the initial login.</p>
+<h2>Single Sign-On</h2>
+<p>Signle sign-on, or SSO, also significantly improves the login experience for users. As the name suggests, SSO lets users authenticate only once, regardless of how many subsequent applications they visit after the initial login.</p>
 <p>This is supported when the SSO IdP (identity provider) sends the target applications an assertion that the user has already been authenticated and should be trusted and let in to the other applications. These assertions are through SAML, OpenID Connect, or JWT. This has two obvious benefits for users: 1). They don’t need to remember multiple login credentials and 2). They only need to authenticate once.</p>
 						<ul class="actions fit">
 						<li><a href="authorization.html" class="button special fit">Continue on to Authorization</a></li>
