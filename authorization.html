@@ -57,16 +57,16 @@
 							<h1>What is Authorization?</h1>
 							<span class="image main"><img src="images/hero-1.jpg" alt="" /></span>
 							<center><ul class="actions">
-							<li><a href="#password" class="button special">User Groups</a></li>
-							<li><a href="#token" class="button special">Simple Authorization</a></li>
-							<li><a href="#social" class="button special">Permissions</a></li>
-							<li><a href="#social" class="button special">RBAC</a></li>
-							<li><a href="#sso" class="button special">Multi-Tenant</a></li>
+							<li><a href="#groups" class="button special">User Groups</a></li>
+							<li><a href="#simple" class="button special">Simple Authorization</a></li>
+							<li><a href="#permissions" class="button special">Permissions</a></li>
+							<li><a href="#rbac" class="button special">RBAC</a></li>
+							<li><a href="#multi-tenant" class="button special">Multi-Tenant</a></li>
 							</ul></center>
 							<p>Authorization is the process of determining what permissions someone has to perform specific actions within an application.</p> 
 							<p>Once a user has entered in a valid login and password (authentication), there are the permission checks (authorization) that are performed to specify what they have access to in your system.</p> 
 							<p>Think of it this way:  You have tickets to a baseball game. They check your ticket at the gate to authenticate that you have valid credentials to enter the stadium. Once you’re inside, your ticket also dictates what seat you are in and authorizes you to access that section of the stadium. 
-							<h2>Structuring  a User Directory</h2>
+							<a name="groups"><h2>Structuring  a User Directory</h2></a>
 							<p>The ability to set authorization permissions is based off your segments of users. First things first, let’s talk about your options for structuring your user database.</p>
 							<h3>Users</h3>
 							<p>Users are the individual people accessing your applications who have valid account credentials.</p> 
@@ -75,11 +75,11 @@
 							<h3>Roles</h3>
 							<p>Roles are predetermined permissions based on a user’s specific function within your application. For example, you may want your admins to be able to publish changes to your application whereas a different group of users should only be able to make edits.</p>
 							<a name="authztypes"><h1>Types of Authorization</h1></a>
-							<h2>Simple Authorization</h2>
+							<a name="simple"><h2>Simple Authorization</h2></a>
 							<p>Simple authorization involves hard-coding permission checks into your application and assigning them to a user or group.</p>
 							<p>Pros: The basic logic is easy to build and sufficient for applications with smaller user databases.</p> 
 							<p>Cons: Difficult to change authorization rules dynamically and can require a lot of refactoring.</p> 
-							<h2>Permission-Based Authorization</h2> 
+							<a name="permissions"><h2>Permission-Based Authorization</h2></a>
 							<p>Permission-based authorization is a more dynamic way of handling authorization. Permissions are statements of functionality that define and resource and what actions it can perform. Permission-based authorization separates your application logic from your data model.</p> 
 							<p>Pros: Easy to change authorization rules dynamically and provides flexibility to your security model.</p> 
 							<p>Cons: Difficult to change authorization rules dynamically and can require a lot of refactoring.</p> 
@@ -97,7 +97,7 @@
 						         "effect": "allow" <br>
 							}<br></code>
 							<br>
-							<h2>Role-Based Access Control</h2>
+							<a name="rbac"><h2>Role-Based Access Control</h2></a>
 							<p>Role-based access control is the process of using roles as a means to control access to application features or data. Implicit Role-Based Access Control is the most common form of RBAC. This is when the application determines  a user’s permissions based on their pre-determined role. That role has specific permissions, but the permissions are not defined in the code itself.  The developer writes an if/else statement reflecting the assumption.</p> 
 							<h2>Resource-Based Access Control</h2>
 							<p>Explicit Role-Based Access Control doesn’t require you to refactor code when permissions need to be changed. This type of RBAC explicitly attributes a concrete behavior statement about a specific resource instance with a user account. Instead of tying permissions to the role, permissions are based off the behaviors assigned to that user or group.</p> 
