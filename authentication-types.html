@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Phantom by HTML5 UP</title>
+		<title>Auth.io - Types of Authentication</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -24,7 +24,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Auth.io</span>
 								</a>
 
 							<!-- Nav -->
@@ -52,12 +52,57 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Generic Page</h1>
+							<h1>Types of Authentication</h1>
 							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-						</div>
+<h2>Password Authentication</h2>
+<h3>What is password security?</h3>
+<p>Password security is the most widely used authentication methodology. A user gives the server their username and password, and if there is a match on the username and password in the table, the user is authenticated and let in to the application. In order to secure this sensitive data there should be a number of safeguards implemented, which we will cover in further detail below.</p>
+<h3>So what are the drawbacks and benefits of password security?</h3> 
+<p>Some commonly referenced drawbacks to password security are (citation: https://www.youtube.com/watch?v=3n4o1BiHT30):</p>
+<ul>
+<li>1). Since it is user input, passwords will be lacking in complexity, making them easy to hack if the appropriate security measures are not taken</li>
+<li>2). Questions used to recover passwords for users can also be relatively simple, and easily answered by a malicious user</li>
+<li>3). Users reuse their passwords across multiple websites, so once one is compromised, a hacker has access to other websites used by that user as well</li>
+</ul>
+<p>That being said, as pointed out in this authentication post, password security has 2 key benefits that have made it the most commonly used form of authentication:</p>
+<ul>
+<li>1). They are easy to use and deploy for both developers and users</li>
+<li>2). If you follow security best practices (see below), then you can address the security concerns of password authentication</li>
+</ul>
+<h3>What are the common levels of password security? And how they are implemented?</h3>
+<p>At the most basic level of security, passwords should be hashed. A hashing algorithm algorithm takes plain text passwords and spits it out as a bunch of randomness. You should NEVER store passwords in plain text - this is an immediate red flag, so storing passwords as hashed values is the minimum level of security you should take. </p>
+<p>The next level of password security adds a “salt” to the hashed algorithm. This additional salt is included as part of the hashing algorithm, and adds additional bits of data to the hashed password, making it more difficult to use Brute Force, Rainbow Tables, or dictionary attacks to crack the stored passwords. </p>
+<p>As an additional defense against brute-force attacks from dedicated computers, you can also increase the computational time through either running the hash multiple times, or using a hash algorithm like Bcrypt or SCrypt that has a computational time complexity built-in to its approach.</p>
+<p>If you take password security seriously, you can also encrypt the hashed password with a private key, which is then stored in a separate location. So not only must the encrypted password be hacked, but also the private key, which makes the entire hacking operation much more difficult. </p>
+<p>To top it all off, you can then break up the hashed passwords into chunks and store those across different physical data stores, which are themselves protected with multi-factor authentication and other security. </p>
+<p>Finally, enforce length and complexity standards when users sign up to use your application. Yes, it’s a pain for your users, but you’d be in a great deal of hurt if their account gets hacked.</p>
+<h2>Token Authentication and OAuth</h2>
+<h3>Challenges of session ids stored server side</h3>
+<p>After a user has been authenticated and logged into a web application, they will still need to have persistent identity throughout their session duration. This has been done historically with session cookies, with the session IDs stored server side. The downside to this is that it creates significant server load as an application scales and it needs to store more session ids. Also, unless there is a totally separate session storage layer, the session storage is only unique to that server. This means that if a user sends a request to a different server for the same application, then there would have to be sticky sessions set up on the load balancer.</p>
+<h3>How does Token Authentication work?</h3>
+<p>Token authentication helps address the problems listed above. With token authentication, rather than storing session ids on the server, once a user authenticates (whether username/password or API keys), the server sends to their browser a token, which can be used to validate each subsequent request and stored as a browser cookie.</p>
+<h3>What does this token look like?</h3>
+<p>One common form of token is a JSON Web Token, or a JWT. JWTs are becoming more common across the web, are compact, URL-safe and encryptable. JWTs can be broken into 3 parts.</p> 
+<p>The first part of a JWT - the header - lists what the token contains. In the second part, aka the payload, is all the data that is needed to identify the user, their authorization claims as well as the token expiration time. In the final section, the JWT contains a hash that cryptographically confirms the validity of the token.</p>
+<p>The server will also send a refresh token in addition to an access token. Refresh tokens will allow a user to get a new access token once the prior access token has expired.</p>
+<h3>Why would you use token authentication?</h3>
+<p>First, because the server won’t need to store that token! So once your application starts to scale, if you were on session authentication, then server load time would increase with that scale. Token authentication, since it’s stateless, helps limit that load time.</p>
+<p>Token authentication is also commonly used for mobile applications as they are easier to use than cookies on iOS or Android.</p>
+<p>Finally, if your user is accessing your application via multiple servers - say because a load balancer or micro-services hosted on different locations - then you will have to have either a distributed session storage layer or have sticky sessions set up. With token auth, however, each server has everything it needs to validate the user’s identity within the token itself - so no need for those sticky sessions!</p>
+<h3>What’s OAuth 2.0?</h3>
+<p>OAuth is a standard for using tokens when you need to 1). get permission to bring in a user’s data from another system - for example you want to use a user’s Facebook or Google data, or 2). When you have a mobile application, it’s more secure to use an access token for authentication rather than storing a user’s login credentials on their mobile device.</p>
+<p>To be clear, there is OAuth 1.0a and OAuth2, which are very different from each other. OAuth2 is more widely used, so we’ll focus on that, referring to it as OAuth.</p>
+<p>OAuth has 4 primary grant types: password credentials, client credentials, authorization and implicit.</p> 
+<p>The password grant type gives the ability to get an access token with a given username and password. The password grant type is used when you have built your own OAuth service and application and you want to authenticate users for your mobile apps.</p>
+<p>Client credentials grant type is used when you’re building an application that is doing non-user related tasks.</p>
+<p>Authorization grant type is when you want to bring in user data from another system on a server side app, and implicit grant type is similar but for a client-side app.</p>
+<h2>Social Login</h2>
+<p>Social login is letting a user log into your application using their login credentials from a social networking service - Facebook, Twitter, Google. Social login can serve simply an authentication purpose, or if the application is bringing in user data from the social service, can be authorized using the aforementioned OAuth protocol.</p>
+<p>Social login helps make user registration easier, since they don’t need to come up with a new username and password, and allows web developers to use additional user data from 3rd party social networks.</p>
+<h2>SSO</h2>
+<p>SSO, or single sign on, also significantly improves the login experience for users. As the name suggests, SSO lets users authenticate only once, regardless of how many subsequent applications they visit after the initial login.</p>
+<p>This is supported when the SSO IdP (identity provider) sends the target applications an assertion that the user has already been authenticated and should be trusted and let in to the other applications. These assertions are through SAML, OpenID Connect, or JWT. This has two obvious benefits for users: 1). They don’t need to remember multiple login credentials and 2). They only need to authenticate once.</p>
+							</div>
 					</div>
 
 				<!-- Footer -->
