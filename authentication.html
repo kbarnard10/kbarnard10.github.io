@@ -108,6 +108,32 @@
 <h2>Single Sign-On</h2>
 <p>Signle sign-on, or SSO, also significantly improves the login experience for users. As the name suggests, SSO lets users authenticate only once, regardless of how many subsequent applications they visit after the initial login.</p>
 <p>This is supported when the SSO IdP (identity provider) sends the target applications an assertion that the user has already been authenticated and should be trusted and let in to the other applications. These assertions are through SAML, OpenID Connect, or JWT. This has two obvious benefits for users: 1). They don’t need to remember multiple login credentials and 2). They only need to authenticate once.</p>
+<h2>SAML</h2>
+<h3>What is SAML and How Does it Relate to SSO?</h3>
+<p>If you want a great overview of what the heck SAML is, and how it relates to SSO, check out <a href=”https://www.youtube.com/watch?v=S9BpeOmuEz4”>this video from Centrify's CTO Paul Moore</a>. In a nutshell, SAML is a way of doing single sign on.</p>
+<p>SSO allows a user to access different applications with a single set of credentials. SAML - which stands for Security Assertion Markup Language - is the protocol through which single sign on is completed between a user, a service provider (the application they’re trying to access), and an Identity Provider (also known as an IdP).</p>
+<h3>How it Works - An Example</h3>
+<p>Let’s say you have a customer support agent, Jonathan, working at company A. Jonathan wants to log into Zendesk, which is one of five applications he uses throughout his day. Rather than have Jonathan remember different logins for each of these applications, company A has enabled single sign on so Jonathan can use one set of credentials to log into all of his applications.</p>
+<p>This is how it works… </p>
+<p>Company A works with an Identity Provider (IdP) which manages all of Jonathan’s credentials for the different systems he has access to. When Jonathan attempts to log into Zendesk, Zendesk will try to authenticate Jonathan via the IdP. The IdP will then send a token to Zendesk which contains Jonathan’s user information, as well as what he can access on Zendesk. When Jonathan visits other applications (service providers) that the IdP has him associated with, because he has already been authenticated by the IdP, he doesn’t need to go through the process of logging in again.</p>
+<p>Furthermore, since the IdP talks to Company A’s IT team and its directory of users, as Jonathan’s access tokens expire, service providers will periodically check back in with the IdP to make sure that he still can access their application. If Jonathan leaves Company A, his access would be updated in the IdP, and after his access tokens expire, he would no longer have access to all those applications. This greatly reduces engineering overhead and stress for both the company and the service providers.</p>
+<p>The SAML standard facilitates this SSO process.</p>
+<h2>Multi-factor Authentication</h2>
+<h3>What is multi-factor authentication?</h3>
+<p>Multi-factor authentication, or MFA, is an authentication where a user submits 2 or more forms of credentials to access a system. These credentials can be knowledge authentication, possession authentication, or inherence authentication:</p>
+<ul>
+<li>Knowledge authentication: some kind of knowledge that the user possesses. This is typically a password, but it can also be a sentence or a PIN
+<li>Possession authentication: should be limited to something that only the person trying to authenticate has - this could be a code sent over SMS, or even a physical device like a USB
+<li>Inherence authentication - normally a biometric authentication, such as a retina or fingerprint scan
+</ul>
+<h3>What are the advantages and disadvantages of mobile phone two factor authentication?</h3>
+<p>One of the most common forms of multi-factor authentication is mobile phone two factor authentication. Typically this is done using a service such as Google Authenticator or Twilio. When you attempt to log into an application, assuming you have agreed to 2 factor authentication and provided your mobile phone number, either during or immediately after logging in, you will be sent an SMS to your mobile phone with a short code. This is a second factor that you use to authenticate with.</p>
+<p>This form of authentication has some advantages and drawbacks. The obvious advantage is that unlike other forms of possession authentication, like a USB, the user typically has a mobile phone on them to receive the text message.</p>
+<p>Unfortunately, text messages and the codes they carry can be intercepted. Furthermore, since many mobile phones are smartphones, should a phone be lost or stolen, it essentially becomes single factor once again.</p>
+<p>Nonetheless, multi-factor authentication is becoming more ubiquitous and mobile phone two factor authentication strikes a reasonable balance between ease of use and enhanced security over single factor authentication.</p>
+<h2>Active Directory</h2>
+<p>Active Directory is a directory service for Windows that authorizes and authenticates users and computers on the network. It is on premise and could check what permissions a user has access to once they have authenticated in.</p>
+					
 						<ul class="actions fit">
 						<li><a href="authorization.html" class="button special fit">Continue on to Authorization</a></li>
 						</ul>
