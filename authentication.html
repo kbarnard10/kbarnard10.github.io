@@ -57,18 +57,18 @@
 							<h1>What is Authentication?</h1>
 							<span class="image main"><img src="images/hero-5.jpg" alt="" /></span>
 							<center><ul class="actions">
-<li><a href="#" class="button special">Password</a></li>
-<li><a href="#" class="button special">Token</a></li>
-<li><a href="#" class="button special">Social Login</a></li>
-<li><a href="#" class="button special">Single Sign-On</a></li>
-<li><a href="#" class="button special">Multi-Factor</a></li>
-<li><a href="#" class="button special">AD / LDAP</a></li>
+<li><a href="#password" class="button special">Password</a></li>
+<li><a href="#token" class="button special">Token</a></li>
+<li><a href="#social" class="button special">Social Login</a></li>
+<li><a href="#sso" class="button special">Single Sign-On</a></li>
+<li><a href="#multifactor" class="button special">Multi-Factor</a></li>
+<li><a href="#adldap" class="button special">AD / LDAP</a></li>
 </ul></center>
 <p>In the context of web development, authentication is verifying that a user is who they say they are. It lets a user access a system with a password or token, while authorization defines the resources that can be used. We will cover these respective authentication methods in further detail.</p>
 <p>Authentication is a critical function for any web application as it 1). keeps user data private, and 2). it can return information specific and useful to that user. As hackers grow more sophisticated, security processes for protecting user data need to stay ahead of the curve. As such, a strong authentication system needs to have strong encryption, API security, firewall protection, and comprehensive data management and system access processes.</p>
 <p>In short, authentication is a critical component of any web application, and it needs to balance ironclad security demands with a smooth customer experience.</p>
 <a name="authtypes"><h1>Types of Authentication</h1></a>
-<h2>Password Authentication</h2>
+<a name="password"><h2>Password Authentication</h2></a>
 <h3>What is password security?</h3>
 <p>Password security is the most widely used authentication methodology. A user gives the server their username and password, and if there is a match on the username and password in the table, the user is authenticated and let in to the application. In order to secure this sensitive data there should be a number of safeguards implemented, which we will cover in further detail below.</p>
 <h3>So what are the drawbacks and benefits of password security?</h3> 
@@ -90,7 +90,7 @@
 <p>If you take password security seriously, you can also encrypt the hashed password with a private key, which is then stored in a separate location. So not only must the encrypted password be hacked, but also the private key, which makes the entire hacking operation much more difficult. </p>
 <p>To top it all off, you can then break up the hashed passwords into chunks and store those across different physical data stores, which are themselves protected with multi-factor authentication and other security. </p>
 <p>Finally, enforce length and complexity standards when users sign up to use your application. Yes, it’s a pain for your users, but you’d be in a great deal of hurt if their account gets hacked.</p>
-<h2>Token Authentication and OAuth</h2>
+<a name="token"><h2>Token Authentication</h2></a>
 <h3>Challenges of session ids stored server side</h3>
 <p>After a user has been authenticated and logged into a web application, they will still need to have persistent identity throughout their session duration. This has been done historically with session cookies, with the session IDs stored server side. The downside to this is that it creates significant server load as an application scales and it needs to store more session ids. Also, unless there is a totally separate session storage layer, the session storage is only unique to that server. This means that if a user sends a request to a different server for the same application, then there would have to be sticky sessions set up on the load balancer.</p>
 <h3>How does Token Authentication work?</h3>
@@ -110,10 +110,10 @@
 <p>The password grant type gives the ability to get an access token with a given username and password. The password grant type is used when you have built your own OAuth service and application and you want to authenticate users for your mobile apps.</p>
 <p>Client credentials grant type is used when you’re building an application that is doing non-user related tasks.</p>
 <p>Authorization grant type is when you want to bring in user data from another system on a server side app, and implicit grant type is similar but for a client-side app.</p>
-<h2>Social Login</h2>
+<a name="social"><h2>Social Login</h2></a>
 <p>Social login is letting a user log into your application using their login credentials from a social networking service - Facebook, Twitter, Google. Social login can serve simply an authentication purpose, or if the application is bringing in user data from the social service, can be authorized using the aforementioned OAuth protocol.</p>
 <p>Social login helps make user registration easier, since they don’t need to come up with a new username and password, and allows web developers to use additional user data from 3rd party social networks.</p>
-<h2>Single Sign-On</h2>
+<a name="sso"><h2>Single Sign-On</h2></a>
 <p>Signle sign-on, or SSO, also significantly improves the login experience for users. As the name suggests, SSO lets users authenticate only once, regardless of how many subsequent applications they visit after the initial login.</p>
 <p>This is supported when the SSO IdP (identity provider) sends the target applications an assertion that the user has already been authenticated and should be trusted and let in to the other applications. These assertions are through SAML, OpenID Connect, or JWT. This has two obvious benefits for users: 1). They don’t need to remember multiple login credentials and 2). They only need to authenticate once.</p>
 <h2>SAML</h2>
@@ -126,7 +126,7 @@
 <p>Company A works with an Identity Provider (IdP) which manages all of Jonathan’s credentials for the different systems he has access to. When Jonathan attempts to log into Zendesk, Zendesk will try to authenticate Jonathan via the IdP. The IdP will then send a token to Zendesk which contains Jonathan’s user information, as well as what he can access on Zendesk. When Jonathan visits other applications (service providers) that the IdP has him associated with, because he has already been authenticated by the IdP, he doesn’t need to go through the process of logging in again.</p>
 <p>Furthermore, since the IdP talks to Company A’s IT team and its directory of users, as Jonathan’s access tokens expire, service providers will periodically check back in with the IdP to make sure that he still can access their application. If Jonathan leaves Company A, his access would be updated in the IdP, and after his access tokens expire, he would no longer have access to all those applications. This greatly reduces engineering overhead and stress for both the company and the service providers.</p>
 <p>The SAML standard facilitates this SSO process.</p>
-<h2>Multi-factor Authentication</h2>
+<a name="multifactor"><h2>Multi-factor Authentication</h2></a>
 <h3>What is multi-factor authentication?</h3>
 <p>Multi-factor authentication, or MFA, is an authentication where a user submits 2 or more forms of credentials to access a system. These credentials can be knowledge authentication, possession authentication, or inherence authentication:</p>
 <ul>
@@ -139,7 +139,7 @@
 <p>This form of authentication has some advantages and drawbacks. The obvious advantage is that unlike other forms of possession authentication, like a USB, the user typically has a mobile phone on them to receive the text message.</p>
 <p>Unfortunately, text messages and the codes they carry can be intercepted. Furthermore, since many mobile phones are smartphones, should a phone be lost or stolen, it essentially becomes single factor once again.</p>
 <p>Nonetheless, multi-factor authentication is becoming more ubiquitous and mobile phone two factor authentication strikes a reasonable balance between ease of use and enhanced security over single factor authentication.</p>
-<h2>Active Directory</h2>
+<a name="adlap"><h2>Active Directory</h2></a>
 <p>Active Directory is a directory service for Windows that authorizes and authenticates users and computers on the network. It is on premise and could check what permissions a user has access to once they have authenticated in.</p>
 					
 						<ul class="actions fit">
