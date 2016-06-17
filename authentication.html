@@ -43,15 +43,7 @@
 						<ul>
 							<li><a href="index.html">Home</a></li>
 							<li><a href="authentication.html">Authentication</a></li>
-								<ul class="alt">
-								<li><a href="authentication.html#password">Password</a></li>
-								<li><a href="authentication.html#token">Token</a></li>
-								<li><a href="authentication.html#social">Social Login</a></li>
-								</ul>
 							<li><a href="authorization.html">Authorization</a></li>
-								<ul class="alt">
-									<li><a href="authentication.html">Authentication</a></li>									</li>
-								</ul>
 							<li><a href="security-compliance.html">Seucrity & Compliance</a></li>
 							<li><a href="infrastructure.html">Infrastructure</a></li>
 							<li><a href="resources.html">Resources</a></li>
@@ -103,7 +95,7 @@
 <p>First, because the server won’t need to store that token! So once your application starts to scale, if you were on session authentication, then server load time would increase with that scale. Token authentication, since it’s stateless, helps limit that load time.</p>
 <p>Token authentication is also commonly used for mobile applications as they are easier to use than cookies on iOS or Android.</p>
 <p>Finally, if your user is accessing your application via multiple servers - say because a load balancer or micro-services hosted on different locations - then you will have to have either a distributed session storage layer or have sticky sessions set up. With token auth, however, each server has everything it needs to validate the user’s identity within the token itself - so no need for those sticky sessions!</p>
-<a name="authprotocols"><h3>What’s OAuth 2.0?</h3></a>
+<a name="authprotocols"><h2>What’s OAuth 2.0?</h2></a>
 <p>OAuth is a standard for using tokens when you need to 1). get permission to bring in a user’s data from another system - for example you want to use a user’s Facebook or Google data, or 2). When you have a mobile application, it’s more secure to use an access token for authentication rather than storing a user’s login credentials on their mobile device.</p>
 <p>To be clear, there is OAuth 1.0a and OAuth2, which are very different from each other. OAuth2 is more widely used, so we’ll focus on that, referring to it as OAuth.</p>
 <p>OAuth has 4 primary grant types: password credentials, client credentials, authorization and implicit.</p> 
