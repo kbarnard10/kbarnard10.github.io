@@ -68,15 +68,14 @@
 							<p>User Unique Permissions: Any permissions that are unique to a user should be tied to that user’s Account resource.</p>
 							<p>Role Permissions: Any permissions that will be shared among a number of users are better bundled together in roles, which individuals accounts are tied to.</p>
 							<p>Permissions look like this:</p> 
-							<code>
-							{ <br>
+							<code>{ <br>
 							 "name": "create-admin", <br>
 							 "description": "This permission allows the account to create an admin", <br>
 							 "action": "read", <br>
   							 "resource": "/admin/create", <br>
 						         "effect": "allow" <br>
-							} <br>
-							</code>
+							}<br></code>
+							<br>
 							<h2>Role-Based Access Control</h2>
 							<p>Role-based access control is the process of using roles as a means to control access to application features or data. Implicit Role-Based Access Control is the most common form of RBAC. This is when the application determines  a user’s permissions based on their pre-determined role. That role has specific permissions, but the permissions are not defined in the code itself.  The developer writes an if/else statement reflecting the assumption.</p> 
 							<h2>Resource-Based Access Control</h2>
